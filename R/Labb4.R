@@ -1,4 +1,20 @@
 
+#' Linreg function.
+#' 
+#' @param formula An object of class formula..
+#' @param data A data_set.
+#' @return A model estimation.
+
+
+
+
+
+
+
+
+
+
+
 linreg <- function (formula,data){
   
   data_name <<- deparse(substitute(data))
