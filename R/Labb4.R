@@ -5,25 +5,12 @@
 #' @param data A data_set.
 #' @return A model estimation.
 
-
-
-
-
-
-
-
-
-
-
 linreg <- function (formula,data){
-  
   data_name <<- deparse(substitute(data))
   #Creating x and y matrices
   X<-model.matrix(formula,data)
   y_col<-all.vars(formula)[1]
   y<-data[,colnames(data)==y_col]
- 
-  
   #equations
   beta_hat<-solve(t(X)%*%X)%*%t(X)%*%y
   y_hat<-X%*%beta_hat
@@ -33,17 +20,16 @@ linreg <- function (formula,data){
   var_hat_beta_hat<-sigma_2_hat*solve(t(X)%*%X)
   t_beta<-beta_hat/as.numeric(sqrt(diag(var_hat_beta_hat)))
   pvalue<-1-pt(t_beta,df)
-  
   #class
   linreg2 <- setRefClass("linreg", fields = list(beta_hat = "matrix",  y_hat = "matrix",
-                                               e_hat = "matrix",
-                                               df = "integer",
-                                               sigma_2_hat = "numeric",
-                                               var_hat_beta_hat = "matrix",
-                                               t_beta = "matrix",
-                                               pvalue = "matrix"),
-                      methods = list(
-                        print.linreg <<- function(x){
+                                                 e_hat = "matrix",
+                                                 df = "integer",
+                                                 sigma_2_hat = "numeric",
+                                                 var_hat_beta_hat = "matrix",
+                                                 t_beta = "matrix",
+                                                 pvalue = "matrix"),
+                         methods = list(
+                           print.linreg <<- function(x){
                         
                           
                           coef <- as.vector(beta_hat)
@@ -89,13 +75,9 @@ linreg <- function (formula,data){
                           return(coef)
                         
                         }
-                      
-                         
-
-  )
-  )
-
-  resultat <- linreg2(beta_hat = beta_hat,  
+                        )
+                        )
+  resultat <- linreg2(beta_hat = beta_hat,
                       y_hat = y_hat,
                       e_hat = e_hat,
                       df = df,
@@ -103,9 +85,6 @@ linreg <- function (formula,data){
                       var_hat_beta_hat = var_hat_beta_hat,
                       t_beta = t_beta,
                       pvalue = pvalue)
-                     
-                       
-  
- return(resultat) 
-}
+  return(resultat) 
+  }
 
