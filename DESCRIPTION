@@ -1,10 +1,10 @@
 Package: Lab4
 Type: Package
-Title: What the package does (short line)
+Title: Linear model function
 Version: 1.0
 Date: 2017-09-18
-Author: Who wrote it
-Maintainer: Who to complain to <yourfault@somewhere.net>
-Description: More about what it does (maybe more than one line)
-License: What license is it under?
+Author: Erika Anderskar, Georgia Mushe
+Maintainer: <eanderskar@gmail.com>, <georgiamushe@gmail.com>
+Description: LM-func
+License: GPL-3
 RoxygenNote: 6.0.1
