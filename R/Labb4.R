@@ -73,12 +73,12 @@ linreg <- function (formula,data){
                           print(p1)
                           print(p2)
                         },
-                        resid.linreg <<- function(){
+                        resid.linreg <<- function(x){
                           
                           return(e_hat)
                           
                         },
-                        pred.linreg <<- function(){
+                        pred.linreg <<- function(x){
                           return(y_hat)
                           
                         },
