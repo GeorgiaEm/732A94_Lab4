@@ -16,12 +16,14 @@
 
 
 linreg <- function (formula,data){
+  data_<-data
+  formula_<-formula
   
-  data_name <<- deparse(substitute(data))
+  data_name <<- deparse(substitute(data_))
   #Creating x and y matrices
-  X<-model.matrix(formula,data)
-  y_col<-all.vars(formula)[1]
-  y<-data[,colnames(data)==y_col]
+  X<-model.matrix(formula_,data_)
+  y_col<-all.vars(formula_)[1]
+  y<-data_[,colnames(data_)==y_col]
  
   
   #equations
@@ -49,7 +51,7 @@ linreg <- function (formula,data){
                           coef <- as.vector(beta_hat)
                           names(coef) <- rownames(beta_hat)
                         
-                          cat("Call:\n Formula:", Reduce(paste,deparse(formula)),
+                          cat("Call:\n Formula:", Reduce(paste,deparse(formula_)),
                               "Data:", data_name, 
                               "\n \n \n",
                               "Coefficients:\n")
