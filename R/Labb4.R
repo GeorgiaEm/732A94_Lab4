@@ -55,24 +55,8 @@ linreg <- function (formula,data){
                               "Coefficients:\n")
                               coef
                         },
-                        resid.linreg <<- function(){
-                          
-                          return(e_hat)
-                          
-                        },
-                        pred.linreg <<- function(){
-                          return(y_hat)
-                          
-                        },
-                        coef.linreg <<- function(x){
-                          
-                          coef <- as.vector(beta_hat)
-                          names(coef) <- rownames(beta_hat)
-                          return(coef)
-                        
-                        },
                         plot.linreg <<- function(x){
-                          require(ggplot2)
+                          requireNamespace(ggplot2)
                           std_res<-sqrt(abs(scale(e_hat)))
                           aaa <-data.frame(y_hat,e_hat,std_res)
                           p1 <- ggplot(aaa) + 
@@ -88,6 +72,22 @@ linreg <- function (formula,data){
                           
                           print(p1)
                           print(p2)
+                        },
+                        resid.linreg <<- function(){
+                          
+                          return(e_hat)
+                          
+                        },
+                        pred.linreg <<- function(){
+                          return(y_hat)
+                          
+                        },
+                        coef.linreg <<- function(x){
+                          
+                          coef <- as.vector(beta_hat)
+                          names(coef) <- rownames(beta_hat)
+                          return(coef)
+                        
                         }
                       
                          
