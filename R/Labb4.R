@@ -72,19 +72,17 @@ linreg <- function (formula,data){
                         
                         },
                         plot.linreg <<- function(x){
-                          hej
                           require(ggplot2)
-                          require(grid)
                           std_res<-sqrt(abs(scale(e_hat)))
-                          aaa <-data.frame(hej$y_hat,hej$e_hat,std_res)
+                          aaa <-data.frame(y_hat,e_hat,std_res)
                           p1 <- ggplot(aaa) + 
-                            aes(x = hej.y_hat, y = hej.e_hat) + 
+                            aes(x = y_hat, y = e_hat) + 
                             geom_point()+ # Definierar punktdiagram
                             geom_smooth(method = "loess", se = FALSE)
                           
                           
                           p2 <- ggplot(aaa) +
-                            aes(x = hej.y_hat, y = std_res) + 
+                            aes(x = y_hat, y = std_res) + 
                             geom_point()+ # Definierar punktdiagram
                             geom_smooth(method = "loess", se = FALSE)
                           
@@ -110,43 +108,4 @@ linreg <- function (formula,data){
   
  return(resultat) 
 }
-
-
-
-hej <- linreg(Petal.Length~Species, data = iris)
-
-plot.linreg(hej)
-pred.linreg(hej)
-
-
-
-beta_hat_Q <- qr.Q(qr(hej$beta_hat))
-beta_hat_R <- qr.R(qr(hej$beta_hat))
-
-var_hat_beta_hat_Q <- qr.Q(qr(hej$var_hat_beta_hat))
-var_hat_beta_hat_R <- qr.R(qr(hej$var_hat_beta_hat))
-
-
-                            
-                                      
-#Lite exempel
-data<-iris
-formula<-Petal.Length~Species
-
-
-qr.Q(qr(beta_hat))
-qr.R(qr(beta_hat))
-qr.Q(qr(var(beta_hat)))
-qr.R(qr(var(beta_hat)))
-
-
-
-
-
-
-
-
-
-
-
 
