@@ -55,6 +55,7 @@ linreg <- setRefClass("linreg", fields = list(formula="formula", data="data.fram
                           # 
                         },
                         plot = function(){
+                          install.packages("ggplot2")
                           requireNamespace(ggplot2)
                           std_res<-sqrt(abs(scale(e_hat)))
                           aaa <-data.frame(y_hat,e_hat,std_res)
