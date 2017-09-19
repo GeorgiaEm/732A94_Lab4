@@ -4,8 +4,11 @@
 #' #' @param formula An object of class formula..
 #' #' @param data A data_set.
 #' #' @return A model estimation.
-
-
+# install.packages("devtools")
+# require(devtools)
+# install_github("GeorgiaEm/732A94_Lab4")
+# require("Lab4")
+# available.packages()
 linreg <- setRefClass("linreg", fields = list(formula="formula", data="data.frame",
                                               data_name="character",
                                               X="matrix", y="numeric", beta_hat="matrix",

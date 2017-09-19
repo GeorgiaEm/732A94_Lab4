@@ -12,3 +12,5 @@ Suggests: testthat,
     knitr,
     rmarkdown
 VignetteBuilder: knitr
+Imports: Lab4,
+    ggplot2

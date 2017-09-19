@@ -8,7 +8,11 @@ vignette: >
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
-
+```{r}
+devtools::use_package("Lab4")
+devtools::use_package("ggplot2")
+linreg$print()
+```
 The Lab4 package consists of one function, linreg. Linreg is a function, of class RC, to calculate a linear regression model. The function needs two arguments to work, formula and data. The formula has to be written as a formula, it starts with the response variable followed by "~" and ends with all the explanatory variables. The explanatory variables are seperated by "+".
 
 Ex, Y ~ X1 + X2 + X3
