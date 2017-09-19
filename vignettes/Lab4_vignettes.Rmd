@@ -1,0 +1,83 @@
+---
+title: "Vignette Lab4"
+author: "Erika Anderskar & Georgia Mushe"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Lab4}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+```{r}
+require("Lab4");
+require("ggplot2");
+linreg<-linreg$new(formula=Petal.Length ~ Sepal.Width + Sepal.Length,data=iris)
+linreg$print()
+```
+The Lab4 package consists of one function, linreg. Linreg is a function, of class RC, to calculate a linear regression model. The function needs two arguments to work, formula and data. The formula has to be written as a formula, it starts with the response variable followed by "~" and ends with all the explanatory variables. The explanatory variables are seperated by "+".
+
+Ex, Y ~ X1 + X2 + X3
+
+The linreg function contains six subfunctions which prints different results. The following functions are implemented:
+
+| Function  | Description                                                               |
+|-----------|---------------------------------------------------------------------------|
+| print()   | prints a formula and the coefficients                                     |
+| plot()    | plots 'Residuals vs Fitted' and 'Scale-Location' `ggplot2`                |
+| resid()   | returns a vector of residuals $\hat{e}$                                   |
+| pred()    | returns a vector of predicted values $\hat{y}$                            |
+| coef()    | returns the coefficients                                                  |
+| summary() | returns the coefficients, standard error, t-values and p-values           |
+
+
+
+## Call the functions
+
+In the following the different functions are described and the corresponding outputs are shown.
+
+The object name is linreg and the functions will therefore be called by`linreg$functionname`.
+
+### print()
+
+The `print()` prints the formula and the coefficients of the estimated linear regression model.
+
+```{r}
+linreg$print()
+```
+
+### plot()
+
+The `plot()` function uses `ggplot2` to plot residuals vs. fitted values and the scale location.
+
+```{r, results = 'hide', message = FALSE, fig.width = 5}
+linreg$plot()
+```
+
+### resid()
+The `resid()` function returns a vector of the residuals of the estmated linear regression model.
+```{r}
+res<-linreg$resid()
+head(res,5)
+
+```
+
+### pred()
+The `pred()` function returns a vector of the predicted values of the estimated linear regression model.
+```{r}
+pre<-linreg$pred()
+head(pre,5)
+```
+
+### coef()
+The `coef()` function returns the coefficients of the estimated linear regression model.
+```{r}
+coef<-linreg$coef()
+head(coef,5)
+```
+
+
+### summary()
+The `summary()` function returns the coefficients, standard errors, t-values and p-values of the estimated linear regression model.
+```{r}
+linreg$print()
+```

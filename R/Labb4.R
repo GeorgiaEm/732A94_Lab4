@@ -55,23 +55,21 @@ linreg <- setRefClass("linreg", fields = list(formula="formula", data="data.fram
                           # 
                         },
                         plot = function(){
-                          install.packages("ggplot2")
-                          requireNamespace(ggplot2)
+                          require("ggplot2")
                           std_res<-sqrt(abs(scale(e_hat)))
                           aaa <-data.frame(y_hat,e_hat,std_res)
                           p1 <- ggplot(aaa) +
                             aes(x = y_hat, y = e_hat) +
                             geom_point()+ # Definierar punktdiagram
-                            geom_smooth(method = "loess", se = FALSE)
+                            geom_smooth(method = "glm", se = FALSE)
                           
                           
                           p2 <- ggplot(aaa) +
                             aes(x = y_hat, y = std_res) +
                             geom_point()+ # Definierar punktdiagram
-                            geom_smooth(method = "loess", se = FALSE)
+                            geom_smooth(method = "glm", se = FALSE)
                           
-                          print(p1)
-                          print(p2)
+                          list(p1,p2)
                         },
                         resid = function(){
                           return(e_hat)
@@ -109,9 +107,9 @@ linreg <- setRefClass("linreg", fields = list(formula="formula", data="data.fram
                       )
 )
 
-#hej<-linreg$new(formula=Petal.Length ~ Sepal.Width + Sepal.Length,data=iris)
+#hej<-linreg$new(formula=Petal.Length ~ Sepal.Width,data=iris)
 
-#hej$print()
+#hej$plot()
 # datasets::iris
 # 
 # 
