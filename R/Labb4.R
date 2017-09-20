@@ -58,16 +58,28 @@ linreg <- setRefClass("linreg", fields = list(formula="formula", data="data.fram
                           require("ggplot2")
                           std_res<-sqrt(abs(scale(e_hat)))
                           aaa <-data.frame(y_hat,e_hat,std_res)
+                          aa2 <- aaa[c(which.max(e_hat),which.min(e_hat),which.max(e_hat[-max(e_hat)])),]
                           p1 <- ggplot(aaa) +
-                            aes(x = y_hat, y = e_hat) +
-                            geom_point()+ # Definierar punktdiagram
-                            geom_smooth(method = "glm", se = FALSE)
+                            labs(title="Residuals vs Fitted", x = "Fitted values", y ="Residuals")+
+                            aes(x = y_hat, y = e_hat) + 
+                            geom_point(shape=21, colour="black", fill="white")+ # Definierar punktdiagram
+                            stat_summary(fun.y=mean, colour="red", geom="line")+
+                            geom_text(data=aa2, aes(x = y_hat, y = e_hat, label=rownames(aa2)),hjust=1.5)+
+                            theme_bw()+
+                            theme(plot.title = element_text(hjust = 0.5))
                           
                           
                           p2 <- ggplot(aaa) +
-                            aes(x = y_hat, y = std_res) +
-                            geom_point()+ # Definierar punktdiagram
-                            geom_smooth(method = "glm", se = FALSE)
+                            labs(title="scale_location", x = "Fitted values", y ="Residuals")+
+                            aes(x = y_hat, y = std_res) + 
+                            geom_point(shape=21, colour="black", fill="white")+ # Definierar punktdiagram
+                            stat_summary(fun.y=mean, colour="red", geom="line")+
+                            geom_text(data=aa2, aes(x = y_hat, y = std_res, label=rownames(aa2)),hjust=1.5)+
+                            theme_bw()+
+                            theme(plot.title = element_text(hjust = 0.5),axis.title.y = element_text(angle=0,vjust = 0.5))
+                          
+                
+            
                           
                           list(p1,p2)
                         },
