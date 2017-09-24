@@ -1,10 +1,11 @@
 #' 
-#' #' Linreg function.
-#' #' 
-#' #' @param formula An object of class formula..
-#' #' @param data A data_set.
-#' #' @return A model estimation.
-
+#'  Linreg function.
+#' 
+#' @param formula An object of class formula..
+#'  @param data A data_set.
+#'  @return A model estimation.
+#' @export
+#' @exportClass 
 
 linreg <- setRefClass("linreg", fields = list(formula="formula",
                                               data="data.frame",
