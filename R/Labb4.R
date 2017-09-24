@@ -5,6 +5,7 @@
 #' #' @param data A data_set.
 #' #' @return A model estimation.
 
+
 linreg <- setRefClass("linreg", fields = list(formula="formula",
                                               data="data.frame",
                                               data_name="character",
@@ -36,6 +37,7 @@ linreg <- setRefClass("linreg", fields = list(formula="formula",
                           pvalue<<- 2*pt(-abs(t_beta), df)
                         },
                         print = function(){
+                          "Prints a formula and the coefficients."
                           coef <- numeric()
                           
                           cat("Call:\nlinreg(formula = ",
@@ -56,6 +58,7 @@ linreg <- setRefClass("linreg", fields = list(formula="formula",
                           cat(coef,sep="      ")
 T                        },
                         plot = function(){
+                          "Plots the residuals against fitted values and Scale-Location."
                           require("ggplot2")
                           std_res<-sqrt(abs(scale(e_hat)))
                           aaa <-data.frame(y_hat,e_hat,std_res)
@@ -85,19 +88,23 @@ T                        },
                           list(p1,p2)
                         },
                         resid = function(){
+                          "Returns a vector of the residuals"
                           return(e_hat)
                         },
                         pred = function(){
+                          "Returns a vector of predicted values"
                           return(y_hat)
                           
                         },
                         coef = function(){
+                          "Returns the coefficients."
                           coef <- as.vector(beta_hat)
                           names(coef) <- rownames(beta_hat)
                           return(coef)
                           
                         },
                         summary = function(){
+                          "Returns the coefficients, standard error, t-values and p-values"
                           cat("Call:\nlinreg(formula = ",Reduce(paste,deparse(formula)),", data = ",data_name,
                               ")\n\nCoefficients:\n ",sep="")
                           
@@ -115,5 +122,3 @@ T                        },
                         }
                       )
 )
-#hej<-linreg$new(Petal.Length ~ Sepal.Width + Sepal.Length,iris)
-#hej$summary()
