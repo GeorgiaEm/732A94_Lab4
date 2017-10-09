@@ -64,11 +64,17 @@ ridgereg <- setRefClass("ridgereg", fields = list(formula="formula",
                           cat("\n")
                           cat(coef,sep="      ")
                                                  },
-                        pred = function(){
+                        pred = function(newdata=NULL){
                           "Returns a vector of predicted values"
+                          if(is.null(newdata)){
                           return(y_hat)
-                          
-                        },
+                          } else{
+                          X2<-model.matrix(formula,newdata)%*%beta_hat
+                          y_hat2 <- apply(X2,2,norm<-function(x2){return (x2-mean(x2))/var(x2)})
+                          return(y_hat2)
+                          }
+                        }
+                        ,
                         coef = function(){
                           "Returns the coefficients."
                           coef <- as.vector(beta_hat)
@@ -81,8 +87,3 @@ ridgereg <- setRefClass("ridgereg", fields = list(formula="formula",
 
 )
 
-
-#hej <- ridgereg$new(Petal.Length~Species,iris,lambda=0)
-#coef(hej)
-#hej$coef()
-#hej$print()
