@@ -4,8 +4,11 @@
 #' @param formula An object of class formula..
 #'  @param data A data_set.
 #'  @return A model estimation.
+#' @export linreg
 #' @export
-#' @exportClass 
+
+# export
+# exportClass 
 
 linreg <- setRefClass("linreg", fields = list(formula="formula",
                                               data="data.frame",

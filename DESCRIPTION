@@ -8,8 +8,5 @@ Maintainer: <eanderskar@gmail.com>, <georgiamushe@gmail.com>
 Description: LM-func
 License: GPL-3
 RoxygenNote: 6.0.1
-Suggests: testthat,
-    knitr,
-    rmarkdown, ggplot2
+Suggests: testthat,knitr,rmarkdown, ggplot2
 VignetteBuilder: knitr
-Depends: R (>= 2.10) 

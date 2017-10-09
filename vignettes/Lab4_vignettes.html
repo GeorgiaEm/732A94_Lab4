@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<meta name="author" content="Erika Anderskar &amp; Georgia Mushe" />
+
+<meta name="date" content="2017-10-09" />
+
+<title>Vignette Lab4</title>
+
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+</style>
+
+
+
+<link href="data:text/css;charset=utf-8,body%20%7B%0Abackground%2Dcolor%3A%20%23fff%3B%0Amargin%3A%201em%20auto%3B%0Amax%2Dwidth%3A%20700px%3B%0Aoverflow%3A%20visible%3B%0Apadding%2Dleft%3A%202em%3B%0Apadding%2Dright%3A%202em%3B%0Afont%2Dfamily%3A%20%22Open%20Sans%22%2C%20%22Helvetica%20Neue%22%2C%20Helvetica%2C%20Arial%2C%20sans%2Dserif%3B%0Afont%2Dsize%3A%2014px%3B%0Aline%2Dheight%3A%201%2E35%3B%0A%7D%0A%23header%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0A%23TOC%20%7B%0Aclear%3A%20both%3B%0Amargin%3A%200%200%2010px%2010px%3B%0Apadding%3A%204px%3B%0Awidth%3A%20400px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Aborder%2Dradius%3A%205px%3B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Afont%2Dsize%3A%2013px%3B%0Aline%2Dheight%3A%201%2E3%3B%0A%7D%0A%23TOC%20%2Etoctitle%20%7B%0Afont%2Dweight%3A%20bold%3B%0Afont%2Dsize%3A%2015px%3B%0Amargin%2Dleft%3A%205px%3B%0A%7D%0A%23TOC%20ul%20%7B%0Apadding%2Dleft%3A%2040px%3B%0Amargin%2Dleft%3A%20%2D1%2E5em%3B%0Amargin%2Dtop%3A%205px%3B%0Amargin%2Dbottom%3A%205px%3B%0A%7D%0A%23TOC%20ul%20ul%20%7B%0Amargin%2Dleft%3A%20%2D2em%3B%0A%7D%0A%23TOC%20li%20%7B%0Aline%2Dheight%3A%2016px%3B%0A%7D%0Atable%20%7B%0Amargin%3A%201em%20auto%3B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dcolor%3A%20%23DDDDDD%3B%0Aborder%2Dstyle%3A%20outset%3B%0Aborder%2Dcollapse%3A%20collapse%3B%0A%7D%0Atable%20th%20%7B%0Aborder%2Dwidth%3A%202px%3B%0Apadding%3A%205px%3B%0Aborder%2Dstyle%3A%20inset%3B%0A%7D%0Atable%20td%20%7B%0Aborder%2Dwidth%3A%201px%3B%0Aborder%2Dstyle%3A%20inset%3B%0Aline%2Dheight%3A%2018px%3B%0Apadding%3A%205px%205px%3B%0A%7D%0Atable%2C%20table%20th%2C%20table%20td%20%7B%0Aborder%2Dleft%2Dstyle%3A%20none%3B%0Aborder%2Dright%2Dstyle%3A%20none%3B%0A%7D%0Atable%20thead%2C%20table%20tr%2Eeven%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Ap%20%7B%0Amargin%3A%200%2E5em%200%3B%0A%7D%0Ablockquote%20%7B%0Abackground%2Dcolor%3A%20%23f6f6f6%3B%0Apadding%3A%200%2E25em%200%2E75em%3B%0A%7D%0Ahr%20%7B%0Aborder%2Dstyle%3A%20solid%3B%0Aborder%3A%20none%3B%0Aborder%2Dtop%3A%201px%20solid%20%23777%3B%0Amargin%3A%2028px%200%3B%0A%7D%0Adl%20%7B%0Amargin%2Dleft%3A%200%3B%0A%7D%0Adl%20dd%20%7B%0Amargin%2Dbottom%3A%2013px%3B%0Amargin%2Dleft%3A%2013px%3B%0A%7D%0Adl%20dt%20%7B%0Afont%2Dweight%3A%20bold%3B%0A%7D%0Aul%20%7B%0Amargin%2Dtop%3A%200%3B%0A%7D%0Aul%20li%20%7B%0Alist%2Dstyle%3A%20circle%20outside%3B%0A%7D%0Aul%20ul%20%7B%0Amargin%2Dbottom%3A%200%3B%0A%7D%0Apre%2C%20code%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0Aborder%2Dradius%3A%203px%3B%0Acolor%3A%20%23333%3B%0Awhite%2Dspace%3A%20pre%2Dwrap%3B%20%0A%7D%0Apre%20%7B%0Aborder%2Dradius%3A%203px%3B%0Amargin%3A%205px%200px%2010px%200px%3B%0Apadding%3A%2010px%3B%0A%7D%0Apre%3Anot%28%5Bclass%5D%29%20%7B%0Abackground%2Dcolor%3A%20%23f7f7f7%3B%0A%7D%0Acode%20%7B%0Afont%2Dfamily%3A%20Consolas%2C%20Monaco%2C%20%27Courier%20New%27%2C%20monospace%3B%0Afont%2Dsize%3A%2085%25%3B%0A%7D%0Ap%20%3E%20code%2C%20li%20%3E%20code%20%7B%0Apadding%3A%202px%200px%3B%0A%7D%0Adiv%2Efigure%20%7B%0Atext%2Dalign%3A%20center%3B%0A%7D%0Aimg%20%7B%0Abackground%2Dcolor%3A%20%23FFFFFF%3B%0Apadding%3A%202px%3B%0Aborder%3A%201px%20solid%20%23DDDDDD%3B%0Aborder%2Dradius%3A%203px%3B%0Aborder%3A%201px%20solid%20%23CCCCCC%3B%0Amargin%3A%200%205px%3B%0A%7D%0Ah1%20%7B%0Amargin%2Dtop%3A%200%3B%0Afont%2Dsize%3A%2035px%3B%0Aline%2Dheight%3A%2040px%3B%0A%7D%0Ah2%20%7B%0Aborder%2Dbottom%3A%204px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Apadding%2Dbottom%3A%202px%3B%0Afont%2Dsize%3A%20145%25%3B%0A%7D%0Ah3%20%7B%0Aborder%2Dbottom%3A%202px%20solid%20%23f7f7f7%3B%0Apadding%2Dtop%3A%2010px%3B%0Afont%2Dsize%3A%20120%25%3B%0A%7D%0Ah4%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23f7f7f7%3B%0Amargin%2Dleft%3A%208px%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Ah5%2C%20h6%20%7B%0Aborder%2Dbottom%3A%201px%20solid%20%23ccc%3B%0Afont%2Dsize%3A%20105%25%3B%0A%7D%0Aa%20%7B%0Acolor%3A%20%230033dd%3B%0Atext%2Ddecoration%3A%20none%3B%0A%7D%0Aa%3Ahover%20%7B%0Acolor%3A%20%236666ff%3B%20%7D%0Aa%3Avisited%20%7B%0Acolor%3A%20%23800080%3B%20%7D%0Aa%3Avisited%3Ahover%20%7B%0Acolor%3A%20%23BB00BB%3B%20%7D%0Aa%5Bhref%5E%3D%22http%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0Aa%5Bhref%5E%3D%22https%3A%22%5D%20%7B%0Atext%2Ddecoration%3A%20underline%3B%20%7D%0A%0Acode%20%3E%20span%2Ekw%20%7B%20color%3A%20%23555%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Edt%20%7B%20color%3A%20%23902000%3B%20%7D%20%0Acode%20%3E%20span%2Edv%20%7B%20color%3A%20%2340a070%3B%20%7D%20%0Acode%20%3E%20span%2Ebn%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Efl%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Ech%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Est%20%7B%20color%3A%20%23d14%3B%20%7D%20%0Acode%20%3E%20span%2Eco%20%7B%20color%3A%20%23888888%3B%20font%2Dstyle%3A%20italic%3B%20%7D%20%0Acode%20%3E%20span%2Eot%20%7B%20color%3A%20%23007020%3B%20%7D%20%0Acode%20%3E%20span%2Eal%20%7B%20color%3A%20%23ff0000%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%0Acode%20%3E%20span%2Efu%20%7B%20color%3A%20%23900%3B%20font%2Dweight%3A%20bold%3B%20%7D%20%20code%20%3E%20span%2Eer%20%7B%20color%3A%20%23a61717%3B%20background%2Dcolor%3A%20%23e3d2d2%3B%20%7D%20%0A" rel="stylesheet" type="text/css" />
+
+</head>
+
+<body>
+
+
+
+
+<h1 class="title toc-ignore">Vignette Lab4</h1>
+<h4 class="author"><em>Erika Anderskar &amp; Georgia Mushe</em></h4>
+<h4 class="date"><em>2017-10-09</em></h4>
+
+
+
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">require</span>(<span class="st">&quot;Lab4&quot;</span>);
+<span class="kw">require</span>(<span class="st">&quot;ggplot2&quot;</span>);</code></pre></div>
+<pre><code>## Loading required package: ggplot2</code></pre>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">linreg&lt;-linreg<span class="op">$</span><span class="kw">new</span>(<span class="dt">formula=</span>Petal.Length <span class="op">~</span><span class="st"> </span>Species,<span class="dt">data=</span>iris)
+linreg<span class="op">$</span><span class="kw">print</span>()</code></pre></div>
+<pre><code>## Call:
+## linreg(formula = Petal.Length ~ Species, data = iris)
+## 
+## Coefficients:
+##   (Intercept)   Speciesversicolor  Speciesvirginica
+## 1.462      2.798      4.09</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+<p>The Lab4 package consists of one function, linreg. Linreg is a function, of class RC, to calculate a linear regression model. The function needs two arguments to work, formula and data. The formula has to be written as a formula, it starts with the response variable followed by “~” and ends with all the explanatory variables. The explanatory variables are seperated by “+”.</p>
+<p>Ex, Y ~ X1 + X2 + X3</p>
+<p>The linreg function contains six subfunctions which print different results. The following functions are implemented:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>print()</td>
+<td>prints a formula and the coefficients</td>
+</tr>
+<tr class="even">
+<td>plot()</td>
+<td>plots ‘Residuals vs Fitted’ and ‘Scale-Location’ <code>ggplot2</code></td>
+</tr>
+<tr class="odd">
+<td>resid()</td>
+<td>returns a vector of residuals <span class="math inline">\(\hat{e}\)</span></td>
+</tr>
+<tr class="even">
+<td>pred()</td>
+<td>returns a vector of predicted values <span class="math inline">\(\hat{y}\)</span></td>
+</tr>
+<tr class="odd">
+<td>coef()</td>
+<td>returns the coefficients</td>
+</tr>
+<tr class="even">
+<td>summary()</td>
+<td>returns the coefficients, standard error, t-values and p-values</td>
+</tr>
+</tbody>
+</table>
+<div id="call-the-functions" class="section level2">
+<h2>Call the functions</h2>
+<p>In the following the different functions are described and the corresponding outputs are shown.</p>
+<p>The object name is linreg and the functions will therefore be called by <code>linreg$functionname</code>.</p>
+<div id="print" class="section level3">
+<h3>print()</h3>
+<p>The <code>print()</code> prints the formula and the coefficients of the estimated linear regression model.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">linreg<span class="op">$</span><span class="kw">print</span>()</code></pre></div>
+<pre><code>## Call:
+## linreg(formula = Petal.Length ~ Species, data = iris)
+## 
+## Coefficients:
+##   (Intercept)   Speciesversicolor  Speciesvirginica
+## 1.462      2.798      4.09</code></pre>
+<pre><code>## [1] TRUE</code></pre>
+</div>
+<div id="plot" class="section level3">
+<h3>plot()</h3>
+<p>The <code>plot()</code> function uses <code>ggplot2</code> to plot residuals vs. fitted values and the scale location.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">linreg<span class="op">$</span><span class="kw">plot</span>()</code></pre></div>
+<p><img src="data:image/png;base64,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" /><!-- --><img src="data:image/png;base64,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" /><!-- --></p>
+</div>
+<div id="resid" class="section level3">
+<h3>resid()</h3>
+<p>The <code>resid()</code> function returns a vector of the residuals of the estmated linear regression model.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">res&lt;-linreg<span class="op">$</span><span class="kw">resid</span>()
+<span class="kw">head</span>(res,<span class="dv">5</span>)</code></pre></div>
+<pre><code>##     [,1]
+## 1 -0.062
+## 2 -0.062
+## 3 -0.162
+## 4  0.038
+## 5 -0.062</code></pre>
+</div>
+<div id="pred" class="section level3">
+<h3>pred()</h3>
+<p>The <code>pred()</code> function returns a vector of the predicted values of the estimated linear regression model.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">pre&lt;-linreg<span class="op">$</span><span class="kw">pred</span>()
+<span class="kw">head</span>(pre,<span class="dv">5</span>)</code></pre></div>
+<pre><code>##    [,1]
+## 1 1.462
+## 2 1.462
+## 3 1.462
+## 4 1.462
+## 5 1.462</code></pre>
+</div>
+<div id="coef" class="section level3">
+<h3>coef()</h3>
+<p>The <code>coef()</code> function returns the coefficients of the estimated linear regression model.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">coef&lt;-linreg<span class="op">$</span><span class="kw">coef</span>()
+<span class="kw">head</span>(coef,<span class="dv">5</span>)</code></pre></div>
+<pre><code>##       (Intercept) Speciesversicolor  Speciesvirginica 
+##             1.462             2.798             4.090</code></pre>
+</div>
+<div id="summary" class="section level3">
+<h3>summary()</h3>
+<p>The <code>summary()</code> function returns the coefficients, standard errors, t-values and p-values of the estimated linear regression model.</p>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">linreg<span class="op">$</span><span class="kw">summary</span>()</code></pre></div>
+<pre><code>## Call:
+## linreg(formula = Petal.Length ~ Species, data = iris)
+## 
+## Coefficients:
+##  (Intercept) 1.462 0.0608584842239832 24.0229446829347 9.30305152284244e-53 ***
+## Speciesversicolor 2.798 0.0860668937750261 32.5095966320547 5.25458742021361e-69 ***
+## Speciesvirginica 4.09 0.0860668937750261 47.5211759203373 4.10613861905076e-91 ***
+## 
+## 
+## Residual standard error: 0.4303345 on 147 degrees of freedom!</code></pre>
+</div>
+</div>
+
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
