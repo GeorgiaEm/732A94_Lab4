@@ -30,7 +30,7 @@ ridgereg <- setRefClass("ridgereg", fields = list(formula="formula",
                                               y_hat="matrix"),
                                            
                       methods = list(
-                        initialize = function(formula,data,lambda){
+                        initialize = function(formula,data,lambda=0){
                           data_name <<- deparse(substitute(data))
                           data<<-data
                           formula<<-formula
