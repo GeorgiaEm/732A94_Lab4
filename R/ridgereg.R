@@ -70,8 +70,8 @@ ridgereg <- setRefClass("ridgereg", fields = list(formula="formula",
                           return(y_hat)
                           } else{
                           X2<-model.matrix(formula,newdata)%*%beta_hat
-                          y_hat2 <- apply(X2,2,norm<-function(x2){return (x2-mean(x2))/var(x2)})
-                          return(y_hat2)
+                          y_hat <- apply(X2,2,norm<-function(x2){return (x2-mean(x2))/var(x2)})
+                          return(y_hat)
                           }
                         }
                         ,
