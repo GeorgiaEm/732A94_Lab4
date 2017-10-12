@@ -1,0 +1,90 @@
+---
+title: "ridgereg"
+author: "Erika Anderskar and Georgia Mushe"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Lab4}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+This is an example of the caret package. 
+
+
+```{r setup, include=FALSE}
+require(dplyr)
+require(mlbench)
+require(caret)
+```
+
+# Part 1
+The caret package is used to partition the data into a training and test data set.
+```{r TrainTest}
+data(BostonHousing)
+
+inTrain <- createDataPartition(y = BostonHousing$medv, times=1, p = 0.75,list = FALSE)
+
+training <- BostonHousing[inTrain,]
+test <- BostonHousing[-inTrain,]
+```
+
+#Part 2
+
+With the caret package two models are fitted to the BostonHousing data.
+
+```{r }
+BostonFit1 <- train(medv ~ ., data = training, 
+                 method = "lm")
+
+BostonFit2 <- train(medv ~ ., data = training, 
+                    method = "leapForward")
+
+BostonFit1$results
+BostonFit2$results
+
+```
+
+The linear regression looks like a better option in this case since the $R^2$ is higher and the Root Mean Squared Error is lower. 
+
+We use the caret package again to fit a ridgeregression to BostonHousing data. 
+
+```{Fit3}
+BostonFit3 <- train(medv ~ ., data = training, 
+                    method = "ridge")
+BostonFit3$results
+
+```
+
+The ridgeregression is better than the forward selection, but the linear regression is still the best option if the Rsquared and RMSE measures are concidered. 
+
+
+To find the optimal lambda a 10-fold cross-validation is used. This can be done with the following code. 
+```{r cv}
+set.seed(12345)
+ctrl <- trainControl(method="repeatedcv",
+                     repeats = 10)
+
+BostonFit4 <- train(medv ~ ., data = training, 
+                    method = "ridge",
+                    trControl= ctrl)
+
+BostonFit4$results
+```
+
+The optimal lambda found is $1e-4$.
+
+#Part 5
+The three models are compared:
+
+
+
+
+
+
+
+
+
+
+
+
+
