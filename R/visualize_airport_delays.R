@@ -1,4 +1,6 @@
+
 visualize_airport_delays<- function() {
+  require(dplyr)
   require(nycflights13)
   flights_df<-tbl_df(flights)
   airports_df<-tbl_df(airports)
