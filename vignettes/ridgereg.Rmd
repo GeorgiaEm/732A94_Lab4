@@ -98,7 +98,7 @@ postResample(pred=BostonFit2_test, obs=test$medv)
 BostonFit3_test <- predict(BostonFit_3, test)
 postResample(pred=BostonFit3_test, obs=test$medv)
 ```
-The output shows that the linear model has the linear regression model performs best.
+The output shows that the linear regression model performs best.
 
 
 
