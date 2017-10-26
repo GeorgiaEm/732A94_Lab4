@@ -1,8 +1,14 @@
+#' 
+#'  Airport delays.
+#' 
+#'  @return A plot of airport delays.
+#' @export
+#' 
 
 visualize_airport_delays<- function() {
-  require(dplyr)
-  require(nycflights13)
-  require(ggplot2)
+  requireNamespace(dplyr)
+  requireNamespace(nycflights13)
+  requireNamespace(ggplot2)
   flights_df<-tbl_df(flights)
   airports_df<-tbl_df(airports)
   

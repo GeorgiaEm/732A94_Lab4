@@ -12,9 +12,9 @@ This is an example of the caret package.
 
 
 ```{r setup, include=FALSE}
-require(mlbench)
-require(caret)
-require(Lab4)
+library(mlbench)
+library(caret)
+library(Lab4)
 ```
 
 # Part 1

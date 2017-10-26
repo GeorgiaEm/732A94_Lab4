@@ -23,7 +23,7 @@ ridgereg function.
 \describe{
 \item{\code{coef()}}{Returns the coefficients.}
 
-\item{\code{pred()}}{Returns a vector of predicted values}
+\item{\code{predict(newdata = NULL)}}{Returns a vector of predicted values}
 
 \item{\code{print()}}{Prints a formula and the coefficients.}
 }}

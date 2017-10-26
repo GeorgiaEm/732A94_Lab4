@@ -31,7 +31,7 @@ ridgereg <- setRefClass("ridgereg", fields = list(formula="formula",
                             QR<-qr(X)
                             Q <- qr.Q(QR)
                             R <- qr.R(QR)
-                            beta_hat<<-solve(t(R) %*% R + lambda * diag(dim(t(R) %*% R)[1])) %*% t(X) %*% y
+                            beta_hat<<-solve(t(R) %*% R + lambda * diag(dim(t(R) %*% R)[1])) %*% t(R)%*% t(Q) %*% y
                             y_hat <<- X %*% beta_hat
                             data <<- data.frame(y,X[,-1])
                           },
