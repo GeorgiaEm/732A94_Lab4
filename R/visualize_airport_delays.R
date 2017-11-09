@@ -6,7 +6,7 @@
 #' 
 
 visualize_airport_delays<- function() {
-  install.packages("dplyr")
+  require(magrittr)
   require(dplyr)
   require(nycflights13)
   require(ggplot2)
