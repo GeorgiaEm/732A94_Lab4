@@ -6,9 +6,9 @@
 #' 
 
 visualize_airport_delays<- function() {
-  requireNamespace(dplyr)
-  requireNamespace(nycflights13)
-  requireNamespace(ggplot2)
+  require(dplyr)
+  require(nycflights13)
+  require(ggplot2)
   flights_df<-tbl_df(flights)
   airports_df<-tbl_df(airports)
   
