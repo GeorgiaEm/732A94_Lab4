@@ -8,6 +8,6 @@ Maintainer: <eanderskar@gmail.com>, <georgiamushe@gmail.com>
 Description: LM-func
 License: GPL (>=3)
 RoxygenNote: 6.0.1
-Suggests: testthat,knitr,rmarkdown, caret,mlbench, nycflights13, MASS,leaps
-Depends: ggplot2, dplyr
+Suggests: testthat,knitr,rmarkdown, caret,mlbench, nycflights13, MASS,leaps,magrittr
+Depends: ggplot2, dplyr, magrittr
 VignetteBuilder: knitr
